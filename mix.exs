@@ -19,7 +19,7 @@ defmodule Pullrequest.Mixfile do
   def application do
     [mod: {Pullrequest, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :tentacat]]
   end
 
   # Specifies which paths to compile per environment.
@@ -35,6 +35,7 @@ defmodule Pullrequest.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:cors_plug, "~> 1.1"},
      {:ja_serializer, "~> 0.8.1"},
+     {:tentacat, "~> 0.2"},
      {:phoenix_html, "~> 2.3"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},

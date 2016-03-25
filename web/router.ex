@@ -7,7 +7,12 @@ defmodule Pullrequest.Router do
 
   scope "api", Pullrequest do
     pipe_through :api # Use the default browser stack
-    resources "projects", ProjectController, except: [:new, :edit]
+    resources "repositories", RepositoryController, only: [:show, :update]
+    resources "organizations", OrganizationController, except: [:new, :edit, :destroy] do
+      resources "repositories", RepositoryController, only: [:index, :create] do
+        
+      end
+    end
   end
 
   # Other scopes may use custom stacks.

@@ -1,9 +1,10 @@
-defmodule Pullrequest.Project do
+defmodule Pullrequest.Organization do
   use Pullrequest.Web, :model
 
-  schema "projects" do
+  schema "organizations" do
     field :name, :string
     field :icon_url, :string
+    has_many :repositories, Pullrequest.Repository
 
     timestamps
   end
