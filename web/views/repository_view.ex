@@ -8,6 +8,7 @@ defmodule Pullrequest.RepositoryView do
   attributes [:name, :description, :homepage]
 
   has_one :organization, link: :org_url
+  has_many :pulls, link: :pulls_url
 
   def repository_url(r, conn) do
     repository_url(conn, :show, r.id)
@@ -15,5 +16,9 @@ defmodule Pullrequest.RepositoryView do
 
   def org_url(o, conn) do
     organization_url(conn, :show, o.id)
+  end
+
+  def pulls_url(r, conn) do
+    repository_pull_url(conn, :index, r.id)
   end
 end

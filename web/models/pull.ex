@@ -1,17 +1,17 @@
-defmodule Pullrequest.Repository do
+defmodule Pullrequest.Pull do
   use Pullrequest.Web, :model
 
-  schema "repositories" do
-    field :name, :string
-    field :description, :string
-    field :homepage, :string
-    belongs_to :organization, Pullrequest.Organization
-    has_many :pulls, Pullrequest.Pull
+  schema "pulls" do
+    field :title, :string
+    field :body, :string
+    field :state, :string
+    field :locked, :boolean, default: false
+    belongs_to :repository, Pullrequest.Repository
 
     timestamps
   end
 
-  @required_fields ~w(name description homepage organization_id)
+  @required_fields ~w(title body state locked repository_id)
   @optional_fields ~w()
 
   @doc """

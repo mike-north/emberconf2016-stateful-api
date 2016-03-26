@@ -7,11 +7,12 @@ defmodule Pullrequest.Router do
 
   scope "api", Pullrequest do
     pipe_through :api # Use the default browser stack
-    resources "repositories", RepositoryController, only: [:show, :update]
-    resources "organizations", OrganizationController, except: [:new, :edit, :destroy] do
-      resources "repositories", RepositoryController, only: [:index, :create] do
-        
-      end
+    resources "repositories", RepositoryController, only: [:show, :update] do
+      resources "pulls", PullController, only: [:index]
+    end
+    resources "pulls", PullController, only: [:show, :update]
+    resources "organizations", OrganizationController, only: [:index, :show] do
+      resources "repositories", RepositoryController, only: [:index]
     end
   end
 
