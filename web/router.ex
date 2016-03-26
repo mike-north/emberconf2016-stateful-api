@@ -2,7 +2,7 @@ defmodule Pullrequest.Router do
   use Pullrequest.Web, :router
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, ["json", "json-api"]
   end
 
   scope "api", Pullrequest do
