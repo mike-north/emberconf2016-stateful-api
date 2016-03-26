@@ -10,7 +10,10 @@ defmodule Pullrequest.Router do
     resources "repositories", RepositoryController, only: [:show, :update] do
       resources "pulls", PullController, only: [:index]
     end
-    resources "pulls", PullController, only: [:show, :update]
+    resources "comments", CommentController, only: [:show, :update, :destroy]
+    resources "pulls", PullController, only: [:show, :update] do
+      resources "comments", CommentController, only: [:index, :create]
+    end
     resources "organizations", OrganizationController, only: [:index, :show] do
       resources "repositories", RepositoryController, only: [:index]
     end

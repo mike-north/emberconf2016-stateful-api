@@ -38,6 +38,16 @@ client = Tentacat.Client.new(%{access_token: System.get_env("GH_TOKEN") || ""})
           locked: pull_info["locked"],
           state: pull_info["state"]
         }
+        Tentacat.Pulls.Comments.list(org_name, repo_info["name"], pull_info["number"], client)
+        |> Enum.each fn comment_info ->
+          comment = Pullrequest.Repo.insert! %Pullrequest.Comment{
+            pull_id: pull.id,
+            body: comment_info["body"],
+            path: comment_info["path"],
+            commit_id: comment_info["commit_id"],
+            diff_hunk: comment_info["diff_hunk"]
+          }
+        end
       end
     end
 
