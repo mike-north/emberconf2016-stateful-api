@@ -29,7 +29,7 @@ defmodule Pullrequest.Endpoint do
     json_decoder: Poison
 
   plug JaSerializer.Deserializer
-
+  plug JaSerializer.ContentTypeNegotiation
   plug Plug.MethodOverride
   plug Plug.Head
 

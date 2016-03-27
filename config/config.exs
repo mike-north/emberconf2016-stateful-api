@@ -10,7 +10,7 @@ config :pullrequest, Pullrequest.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "KDJ1WsABPHqWQ22B75dJfq7rKnUZmVDpyr1SGiJuKn/f2MHNYi/kW9WzUxW/E05g",
-  render_errors: [accepts: ~w(html json)],
+  render_errors: [accepts: ~w(json)],
   pubsub: [name: Pullrequest.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
