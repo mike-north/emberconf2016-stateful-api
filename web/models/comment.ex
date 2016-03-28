@@ -11,8 +11,8 @@ defmodule Pullrequest.Comment do
     timestamps
   end
 
-  @required_fields ~w(body diff_hunk commit_id path, pull_id)
-  @optional_fields ~w()
+  @required_fields ~w(body)
+  @optional_fields ~w(diff_hunk commit_id path)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

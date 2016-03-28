@@ -3,8 +3,6 @@ defmodule Pullrequest.CommentController do
 
   alias Pullrequest.Comment
 
-  plug :scrub_params, "comment" when action in [:create, :update]
-
   def index(conn, %{"pull_id" => pull_id}) do
     query = from(c in Comment, where: c.pull_id == ^pull_id)
 
@@ -20,9 +18,11 @@ defmodule Pullrequest.CommentController do
     render(conn, "index.json", data: comments)
   end
 
-  def create(conn, %{"comment" => comment_params}) do
-    changeset = Comment.changeset(%Comment{}, comment_params)
-
+  def create(conn, %{"data" => %{"type" => "comments", "attributes" => comment_params, "relationships" => relationship_params}}) do
+    {pull_id, _} = relationship_params["pull"]["data"]["id"] |> Integer.parse
+    changeset = Comment.changeset(%Comment{pull_id: pull_id }, comment_params)
+    {lag, _} = (System.get_env("COMMENT_CREATE_LAG") || "5") |> Integer.parse
+    :timer.sleep(lag)
     case Repo.insert(changeset) do
       {:ok, comment} ->
         conn

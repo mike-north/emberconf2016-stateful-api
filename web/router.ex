@@ -12,7 +12,7 @@ defmodule Pullrequest.Router do
     resources "repositories", RepositoryController, only: [:show, :update] do
       resources "pulls", PullController, only: [:index]
     end
-    resources "comments", CommentController, only: [:show, :update, :destroy]
+    resources "comments", CommentController, only: [:show, :update, :destroy, :create]
     resources "pulls", PullController, only: [:show, :update] do
       resources "comments", CommentController, only: [:index, :create]
     end
