@@ -34,7 +34,7 @@ defmodule Pullrequest.Mixfile do
      {:phoenix_ecto, "~> 2.0"},
      {:postgrex, ">= 0.0.0"},
      {:cors_plug, "~> 1.1"},
-     {:ja_serializer, "~> 0.8.1"},
+     {:ja_serializer, git: "https://github.com/AgilionApps/ja_serializer", sha: "beb59f01c5d2939ceb493b105bc3273ca5d2e282"},
      {:tentacat, "~> 0.2"},
      {:phoenix_html, "~> 2.3"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
