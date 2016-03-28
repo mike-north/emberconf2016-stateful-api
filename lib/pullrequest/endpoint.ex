@@ -28,7 +28,6 @@ defmodule Pullrequest.Endpoint do
     pass: ["*/*"],
     json_decoder: Poison
 
-  plug JaSerializer.Deserializer
   plug Plug.MethodOverride
   plug Plug.Head
 
