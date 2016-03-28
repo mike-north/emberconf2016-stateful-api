@@ -21,7 +21,7 @@ defmodule Pullrequest.CommentController do
   def create(conn, %{"data" => %{"type" => "comments", "attributes" => comment_params, "relationships" => relationship_params}}) do
     {pull_id, _} = relationship_params["pull"]["data"]["id"] |> Integer.parse
     changeset = Comment.changeset(%Comment{pull_id: pull_id }, comment_params)
-    {lag, _} = (System.get_env("COMMENT_CREATE_LAG") || "5") |> Integer.parse
+    {lag, _} = (System.get_env("COMMENT_CREATE_LAG") || "3") |> Integer.parse
     :timer.sleep(lag)
     case Repo.insert(changeset) do
       {:ok, comment} ->
