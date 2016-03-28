@@ -4,7 +4,6 @@ defmodule Pullrequest.Router do
   pipeline :api do
     plug :accepts, ["json", "json-api"]
     plug JaSerializer.Deserializer
-    plug JaSerializer.ContentTypeNegotiation
   end
 
   scope "api", Pullrequest do
