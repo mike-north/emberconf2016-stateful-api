@@ -13,7 +13,8 @@ use Mix.Config
 # which you typically run after static files are built.
 config :pullrequest, Pullrequest.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
+  url: [scheme: "https", host: "emberconf-state-api.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 config :pullrequest, Pullrequest.Repo,
