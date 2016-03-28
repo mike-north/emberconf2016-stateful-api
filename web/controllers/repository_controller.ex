@@ -5,8 +5,18 @@ defmodule Pullrequest.RepositoryController do
 
   plug :scrub_params, "repository" when action in [:create, :update]
 
-  def index(conn, %{"organization_id" => org_id}) do
-    repositories = Repo.all(Repository)
+  def index(conn, %{"organization_id" => organization_id}) do
+    query = from(c in Repository, where: c.organization_id == ^organization_id)
+
+    # if params["state"] do
+    #   query = from p in query, where: p.state == ^params["state"]
+    # end
+
+    # if params["locked"] do
+    #   query = from p in query, where: p.locked == ^params["locked"]
+    # end
+
+    repositories = query |> Repo.all
     render(conn, "index.json", data: repositories)
   end
 

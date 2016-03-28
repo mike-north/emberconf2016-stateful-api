@@ -8,6 +8,7 @@ defmodule Pullrequest.Router do
 
   scope "api", Pullrequest do
     pipe_through :api 
+    resources "pulls", PullController, only: [:index]
     resources "repositories", RepositoryController, only: [:show, :update] do
       resources "pulls", PullController, only: [:index]
     end

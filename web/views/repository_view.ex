@@ -15,7 +15,7 @@ defmodule Pullrequest.RepositoryView do
   end
 
   def org_url(o, conn) do
-    organization_url(conn, :show, o.id)
+    organization_url(conn, :show, o.organization_id)
   end
 
   def pulls_url(r, conn) do

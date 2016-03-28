@@ -28,7 +28,7 @@ defmodule Pullrequest.OrganizationController do
 
   def show(conn, %{"id" => id}) do
     organization = Repo.get!(Organization, id)
-    render(conn, "show.json", organization: organization)
+    render(conn, "show.json", data: organization)
   end
 
   def update(conn, %{"id" => id, "organization" => organization_params}) do

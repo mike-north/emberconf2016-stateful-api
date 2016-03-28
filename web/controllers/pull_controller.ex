@@ -12,6 +12,12 @@ defmodule Pullrequest.PullController do
     query = from(p in Pull, where: p.repository_id == ^repo_id)
 
     if params["state"] do
+      case params["state"] do
+        "open" ->
+          {lag, _} = Integer.parse(System.get_env("OPEN_PR_LAG") || "1")
+          :timer.sleep(lag)
+        _ -> nil
+      end
       query = from p in query, where: p.state == ^params["state"]
     end
 
