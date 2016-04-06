@@ -5,7 +5,7 @@ defmodule Pullrequest.RepositoryView do
 
   location :repository_url
 
-  attributes [:name, :description, :homepage]
+  attributes [:name, :description, :homepage, :stargazers_count, :watchers_count]
 
   has_one :organization, link: :org_url
   has_many :pulls, link: :pulls_url
