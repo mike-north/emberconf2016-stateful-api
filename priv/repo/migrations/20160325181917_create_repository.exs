@@ -6,6 +6,8 @@ defmodule Pullrequest.Repo.Migrations.CreateRepository do
       add :name, :string
       add :description, :string
       add :homepage, :string
+      add :stargazers_count, :integer
+      add :watchers_count, :integer
       add :organization_id, references(:organizations, on_delete: :nothing)
 
       timestamps

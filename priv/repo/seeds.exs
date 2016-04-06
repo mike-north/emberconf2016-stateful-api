@@ -26,7 +26,9 @@ client = Tentacat.Client.new(%{access_token: System.get_env("GH_TOKEN") || ""})
         organization_id: project.id,
         name: repo_info["name"],
         description: repo_info["description"],
-        homepage: repo_info["homepage"]
+        homepage: repo_info["homepage"],
+        stargazers_count: repo_info["stargazers_count"],
+        watchers_count: repo_info["watchers_count"]
       }
       Tentacat.Pulls.list(org_name, repo_info["name"], client)
       |> Enum.take_random(25)
