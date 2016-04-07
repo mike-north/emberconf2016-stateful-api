@@ -7,7 +7,7 @@ defmodule Pullrequest.RepositoryController do
 
   def index(conn, %{"organization_id" => organization_id}) do
     query = from(c in Repository, where: c.organization_id == ^organization_id)
-
+    :timer.sleep(3000)
     # if params["state"] do
     #   query = from p in query, where: p.state == ^params["state"]
     # end
@@ -37,6 +37,7 @@ defmodule Pullrequest.RepositoryController do
   end
 
   def show(conn, %{"id" => id}) do
+    :timer.sleep(3000)
     repository = Repo.get!(Repository, id)
     render(conn, "show.json", data: repository)
   end
