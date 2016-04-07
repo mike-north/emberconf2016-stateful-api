@@ -7,7 +7,7 @@ defmodule Pullrequest.RepositoryController do
 
   def index(conn, %{"organization_id" => organization_id}) do
     query = from(c in Repository, where: c.organization_id == ^organization_id)
-    :timer.sleep(3000)
+    # :timer.sleep(3000)
     # if params["state"] do
     #   query = from p in query, where: p.state == ^params["state"]
     # end
