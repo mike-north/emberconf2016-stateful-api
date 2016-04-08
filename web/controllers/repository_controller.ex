@@ -37,7 +37,6 @@ defmodule Pullrequest.RepositoryController do
   end
 
   def show(conn, %{"id" => id}) do
-    :timer.sleep(3000)
     repository = Repo.get!(Repository, id)
     render(conn, "show.json", data: repository)
   end
